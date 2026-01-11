@@ -1,0 +1,89 @@
+.category-manager-content {
+    max-height: 80vh;
+}
+
+.categories-list ul {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.category-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 10px;
+}
+
+.category-row:last-child {
+    border-bottom: none;
+}
+
+.color-preview {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.category-label {
+    flex: 1;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.category-label:hover {
+    text-decoration: underline;
+}
+
+.color-picker-input {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.text-input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.save-icon-btn,
+.cancel-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.save-icon-btn {
+    color: var(--color-header-green);
+}
+
+.cancel-icon-btn {
+    color: #888;
+}
+
+.save-icon-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.add-category-section {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+}

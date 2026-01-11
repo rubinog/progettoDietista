@@ -1,0 +1,10 @@
+/* Clear Button specific styles */
+.floating-action-btn.clear-btn {
+    background-color: #e74c3c;
+    /* Red from variables */
+}
+
+.floating-action-btn.clear-btn:hover {
+    background-color: #c0392b;
+    /* Darker red */
+}

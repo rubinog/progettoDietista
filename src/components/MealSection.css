@@ -1,0 +1,39 @@
+.meal-section {
+    width: 100%;
+}
+
+/* Background for the Title Row (Colazione, Spuntino, etc) */
+.meal-title-row {
+    background-color: var(--color-section-bg);
+    padding: 10px;
+    text-align: center;
+    /* border-bottom: 1px solid var(--color-border); */
+}
+
+.meal-title-row h3 {
+    font-size: 1.2rem;
+    color: black;
+    margin: 0;
+}
+
+/* Parallel Grid for DayCells */
+.meal-grid-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: #fff;
+    /* border-bottom: 1px solid var(--color-border); */
+    /* Add subtle separation between items in row? */
+}
+
+/* Add odd/even coloring if needed, but image seems plain white rows for content?
+   Actually, image has alternating section backgrounds?
+   "Colazione" section has light grey bg for TITLE.
+   Content seems white?
+   Wait, "Colazione" row has items.
+   Items are on white?
+   Actually, it looks like the title "Colazione" is on a light grey bar.
+   The items are below it.
+   Then "Spuntino" bar (light grey).
+   Then items.
+   Yes, that's what I implemented.
+*/

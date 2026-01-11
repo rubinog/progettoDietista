@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import './components/ClearButton.css';
+
+:root {
+  --color-header-dark: #1a2b4b;
+  --color-header-green: #8cc63f;
+  /* Adjusted to match image vivid green */
+  --color-section-bg: #f9f9f9;
+  --color-text: #333333;
+  --color-text-light: #555555;
+  --color-border: #e0e0e0;
+
+  /* Food Category Colors (approx from image) */
+  --color-cereali: #8e44ad;
+  /* Purple */
+  --color-latte: #f39c12;
+  /* Orange */
+  --color-formaggi: #3498db;
+  /* Light Blue */
+  --color-frutta: #7cb342;
+  /* Green */
+  --color-carne: #e74c3c;
+  /* Red */
+  --color-pesce: #2980b9;
+  /* Dark Blue */
+  --color-legumi: #795548;
+  /* Brown */
+  --color-uova: #f1c40f;
+  /* Yellow */
+  --color-dolci: #e91e63;
+  /* Pink */
+
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.4;
+  font-weight: 500;
+
+  color: var(--color-text);
+  background-color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: white;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Shared Floating Action Button Style */
+.floating-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  /* Slightly larger padding for better touch/click area */
+  background-color: var(--color-header-dark, #1a2b4b);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  /* Slightly more rounded */
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Softer shadow */
+  transition: all 0.2s ease;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  /* Explicit font size */
+  line-height: 1;
+  /* Fix vertical alignment */
+}
+
+.floating-action-btn:hover {
+  background-color: #2c4a80;
+  /* Slightly lighter on hover */
+}
+
+.floating-action-btn:active {
+  transform: translateY(1px);
+}
