@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import './PrintLayout.css';
 
-export const PrintLayout = ({ children }) => {
+export const PrintLayout = ({ children, patientName, setPatientName, date, setDate, title, setTitle }) => {
     // Default values
-    const [patientName, setPatientName] = useState('');
-    const [date, setDate] = useState(new Date().toISOString().split('T')[0]); // YYYY-MM-DD
-    const [title, setTitle] = useState('Schema dietetico 1 settimana');
 
     // handlePrint moved to App.jsx
 
@@ -43,6 +40,7 @@ export const PrintLayout = ({ children }) => {
                         className="print-input diet-title"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Schema Dietetico"
                     />
                 </div>
             </header>

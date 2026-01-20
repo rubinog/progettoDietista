@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PrintLayout } from './components/PrintLayout';
+import { FloatingMenu } from './components/FloatingMenu';
 import { WeeklyTable } from './components/WeeklyTable';
 import { EditModal } from './components/EditModal';
 import { CategoryManager } from './components/CategoryManager';
@@ -43,43 +44,47 @@ function App() {
     return { items: dayData.items || [], note: dayData.note || '' };
   };
 
+  const [patientName, setPatientName] = useState('');
+  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [title, setTitle] = useState('Schema dietetico 1 settimana');
+
+  const handleClearPlan = () => {
+    if (window.confirm('Sei sicuro di voler cancellare tutto il piano? Questa azione non può essere annullata.')) {
+      setPlan(prev => prev.map(meal => ({
+        ...meal,
+        days: Array(7).fill([])
+      })));
+      setPatientName('');
+      setDate(new Date().toISOString().split('T')[0]);
+      setTitle('Schema Dietetico');
+    }
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
+
   const [isCategoryManagerOpen, setIsCategoryManagerOpen] = useState(false);
 
   return (
     <CategoryProvider>
       <div className="App">
         {/* Floating/Fixed button for Category Management */}
-        <div style={{ position: 'fixed', top: 10, right: 10, zIndex: 100, display: 'flex', flexDirection: 'column', gap: '10px' }} className="no-print">
-          <button
-            onClick={() => setIsCategoryManagerOpen(true)}
-            className="floating-action-btn"
-          >
-            ⚙️ Gestisci Categorie
-          </button>
+        {/* New Floating Menu replacing the old button stack */}
+        <FloatingMenu
+          onManageCategories={() => setIsCategoryManagerOpen(true)}
+          onPrint={handlePrint}
+          onClear={handleClearPlan}
+        />
 
-          <button
-            onClick={() => window.print()}
-            className="floating-action-btn"
-          >
-            🖨️ Stampa PDF
-          </button>
-
-          <button
-            onClick={() => {
-              if (window.confirm('Sei sicuro di voler cancellare tutto il piano? Questa azione non può essere annullata.')) {
-                setPlan(prev => prev.map(meal => ({
-                  ...meal,
-                  days: Array(7).fill([])
-                })));
-              }
-            }}
-            className="floating-action-btn clear-btn"
-          >
-            🗑️ Svuota
-          </button>
-        </div>
-
-        <PrintLayout>
+        <PrintLayout
+          patientName={patientName}
+          setPatientName={setPatientName}
+          date={date}
+          setDate={setDate}
+          title={title}
+          setTitle={setTitle}
+        >
           <WeeklyTable plan={plan} onCellClick={handleCellClick} />
         </PrintLayout>
 
