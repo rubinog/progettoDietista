@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CategoryContext } from '../context/CategoryContext';
+import { CategoryContext } from '../context/CategoryContextObject';
 import './Legend.css';
 
 export const Legend = () => {

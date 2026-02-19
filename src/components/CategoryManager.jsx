@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { X, Trash2, Save, Plus } from 'lucide-react';
-import { CategoryContext } from '../context/CategoryContext';
+import { CategoryContext } from '../context/CategoryContextObject';
 import './CategoryManager.css';
 
 export const CategoryManager = ({ isOpen, onClose }) => {

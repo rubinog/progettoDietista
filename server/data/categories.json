@@ -1,0 +1,47 @@
+{
+  "CEREALI": {
+    "id": "cereali",
+    "label": "Cereali e Patate",
+    "color": "#f0d20f"
+  },
+  "LATTE": {
+    "id": "latte",
+    "label": "Latte/yogurt",
+    "color": "#a0dfe3"
+  },
+  "FORMAGGI": {
+    "id": "formaggi",
+    "label": "Formaggi",
+    "color": "var(--color-formaggi)"
+  },
+  "FRUTTA": {
+    "id": "frutta",
+    "label": "Frutta e verdura",
+    "color": "var(--color-frutta)"
+  },
+  "CARNE": {
+    "id": "carne",
+    "label": "Carne",
+    "color": "var(--color-carne)"
+  },
+  "PESCE": {
+    "id": "pesce",
+    "label": "Pesce",
+    "color": "#ec7627"
+  },
+  "LEGUMI": {
+    "id": "legumi",
+    "label": "Legumi",
+    "color": "var(--color-legumi)"
+  },
+  "UOVA": {
+    "id": "uova",
+    "label": "Uova",
+    "color": "var(--color-uova)"
+  },
+  "DOLCI": {
+    "id": "dolci",
+    "label": "Dolci",
+    "color": "var(--color-dolci)"
+  }
+}
