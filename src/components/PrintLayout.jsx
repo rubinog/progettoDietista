@@ -24,7 +24,7 @@ export const PrintLayout = ({ children, patientName, setPatientName, date, setDa
                             onChange={(e) => setPatientName(e.target.value)}
                         />
                     </div>
-                    <div className="header-field">
+                    <div className="header-field date-field">
                         <label className="no-print">Data:</label>
                         <input
                             type="date"
