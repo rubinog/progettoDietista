@@ -16,6 +16,26 @@
     margin: 0;
 }
 
+.meal-section-note-input {
+    width: min(560px, 95%);
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    color: #555;
+    background-color: #fff;
+}
+
+.meal-section-note-input::placeholder {
+    color: #9b9b9b;
+}
+
+.meal-section-note-input:focus {
+    outline: none;
+    border-color: #9c9c9c;
+}
+
 /* Parallel Grid for DayCells */
 .meal-grid-row {
     display: grid;
@@ -23,6 +43,18 @@
     background-color: #fff;
     /* border-bottom: 1px solid var(--color-border); */
     /* Add subtle separation between items in row? */
+}
+
+.meal-note-row {
+    background-color: #fff;
+    padding: 8px 10px 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.meal-note-row .meal-section-note-input {
+    width: 100%;
+    max-width: none;
 }
 
 /* Add odd/even coloring if needed, but image seems plain white rows for content?
@@ -37,3 +69,14 @@
    Then items.
    Yes, that's what I implemented.
 */
+
+@media print {
+    .meal-section-note-input::placeholder {
+        color: transparent;
+    }
+
+    .meal-section-note-input:placeholder-shown {
+        border-color: transparent;
+        background-color: transparent;
+    }
+}

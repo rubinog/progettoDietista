@@ -2,7 +2,7 @@ import React from 'react';
 import { DayCell } from './DayCell';
 import './MealSection.css';
 
-export const MealSection = ({ title, days, onCellClick }) => {
+export const MealSection = ({ mealIndex, title, days, sectionNote, onCellClick, onSectionNoteChange }) => {
     // days is array of 7 arrays of items
     // e.g. [ [{text:..}, {text:..}], [], ... ]
 
@@ -24,10 +24,19 @@ export const MealSection = ({ title, days, onCellClick }) => {
                             key={i}
                             items={items}
                             note={note}
-                            onEdit={() => onCellClick(title, i)}
+                            onEdit={() => onCellClick(mealIndex, i)}
                         />
                     );
                 })}
+            </div>
+            <div className="meal-note-row">
+                <input
+                    type="text"
+                    className="meal-section-note-input"
+                    placeholder="Nota comune per tutta la settimana..."
+                    value={sectionNote}
+                    onChange={(e) => onSectionNoteChange(e.target.value)}
+                />
             </div>
         </div>
     );

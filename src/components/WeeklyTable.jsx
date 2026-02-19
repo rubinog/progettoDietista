@@ -5,7 +5,7 @@ import './WeeklyTable.css';
 
 const DAYS = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica'];
 
-export const WeeklyTable = ({ plan, onCellClick }) => {
+export const WeeklyTable = ({ plan, onCellClick, onMealNoteChange }) => {
     return (
         <div className="weekly-wrapper">
             {/* Decorative Top Bar */}
@@ -24,9 +24,12 @@ export const WeeklyTable = ({ plan, onCellClick }) => {
                     {plan.map((meal, idx) => (
                         <MealSection
                             key={idx}
+                            mealIndex={idx}
                             title={meal.type}
                             days={meal.days}
+                            sectionNote={meal.sectionNote || ''}
                             onCellClick={onCellClick}
+                            onSectionNoteChange={(value) => onMealNoteChange(idx, value)}
                         />
                     ))}
                 </div>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PrintLayout.css';
 
-export const PrintLayout = ({ children, patientName, setPatientName, date, setDate, title, setTitle }) => {
+export const PrintLayout = ({ children, patientName, setPatientName, date, setDate, title, setTitle, disclaimer }) => {
     // Default values
 
     // handlePrint moved to App.jsx
@@ -53,10 +53,7 @@ export const PrintLayout = ({ children, patientName, setPatientName, date, setDa
             {/* Print Footer */}
             <footer className="print-footer">
                 <p>
-                    Il presente schema alimentare ha finalità esclusivamente illustrative.
-                    Le indicazioni riportate non rappresentano una prescrizione nutrizionale.
-                    In nessun caso tali contenuti possono sostituire il parere, la diagnosi o le istruzioni del medico curante,
-                    il quale deve essere interpellato preventivamente, in presenza di patologie o disturbi della salute.
+                    {disclaimer}
                 </p>
             </footer>
         </div>

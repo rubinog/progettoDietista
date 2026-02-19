@@ -1,27 +1,19 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { X, Plus, Trash2 } from 'lucide-react';
-import { CategoryContext } from '../context/CategoryContext';
+import { CategoryContext } from '../context/CategoryContextObject';
 import './EditModal.css';
 
-export const EditModal = ({ isOpen, onClose, dayIndex, mealType, initialData, onSave }) => {
+export const EditModal = ({ isOpen, onClose, mealIndex, dayIndex, mealType, initialData, onSave }) => {
     const { categories } = useContext(CategoryContext);
-    const [items, setItems] = useState([]);
-    const [note, setNote] = useState('');
+    const [items, setItems] = useState(() => [...(initialData?.items || [])]);
+    const [note, setNote] = useState(() => initialData?.note || '');
+    const [copyTargetDay, setCopyTargetDay] = useState('');
+    const [copyNoteToTarget, setCopyNoteToTarget] = useState(false);
     const [newItemText, setNewItemText] = useState('');
     const [newItemQuantity, setNewItemQuantity] = useState('');
     const [newItemCategory, setNewItemCategory] = useState('CEREALI');
 
     const DAYS = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato', 'Domenica'];
-
-    useEffect(() => {
-        if (isOpen && initialData) {
-            setItems([...initialData.items]);
-            setNote(initialData.note || '');
-            setNewItemText('');
-            setNewItemQuantity('');
-            setNewItemCategory('CEREALI');
-        }
-    }, [isOpen, initialData]);
 
     if (!isOpen) return null;
 
@@ -43,7 +35,13 @@ export const EditModal = ({ isOpen, onClose, dayIndex, mealType, initialData, on
     };
 
     const handleSave = () => {
-        onSave(mealType, dayIndex, items, note);
+        onSave(mealIndex, dayIndex, items, note);
+        onClose();
+    };
+
+    const handleCopyItems = () => {
+        if (!onSave || copyTargetDay === '') return;
+        onSave(mealIndex, dayIndex, items, note, Number(copyTargetDay), copyNoteToTarget);
         onClose();
     };
 
@@ -125,6 +123,36 @@ export const EditModal = ({ isOpen, onClose, dayIndex, mealType, initialData, on
                                 resize: 'vertical'
                             }}
                         />
+                    </div>
+
+                    <div className="copy-section">
+                        <h4>Copia alimenti in un altro giorno:</h4>
+                        <div className="form-row">
+                            <select
+                                value={copyTargetDay}
+                                onChange={(e) => setCopyTargetDay(e.target.value)}
+                            >
+                                <option value="">Seleziona giorno...</option>
+                                {DAYS.map((day, idx) => (
+                                    idx !== dayIndex ? <option key={day} value={idx}>{day}</option> : null
+                                ))}
+                            </select>
+                            <button
+                                className="copy-btn"
+                                onClick={handleCopyItems}
+                                disabled={copyTargetDay === '' || items.length === 0}
+                            >
+                                Copia alimenti
+                            </button>
+                            <label className="copy-note-option">
+                                <input
+                                    type="checkbox"
+                                    checked={copyNoteToTarget}
+                                    onChange={(e) => setCopyNoteToTarget(e.target.checked)}
+                                />
+                                Copia anche la nota
+                            </label>
+                        </div>
                     </div>
                 </div>
 

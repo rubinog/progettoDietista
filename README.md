@@ -1,16 +1,133 @@
-# React + Vite
+# Progetto Dietista
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Applicazione React + Vite per creare uno schema alimentare settimanale, modificarlo in modo rapido e stamparlo in formato pagina.
 
-Currently, two official plugins are available:
+## Funzionalità principali
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Tabella settimanale con 7 giorni e sezioni pasto (colazione, spuntino, pranzo, cena).
+- Modifica cella tramite modale: aggiunta/rimozione alimenti, quantità e note.
+- Categorie alimentari colorate con legenda.
+- Gestione categorie (aggiunta, modifica, eliminazione) in tempo reale.
+- Intestazione personalizzabile per paziente, data e titolo schema.
+- Stampa/PDF con layout ottimizzato e disclaimer finale.
+- Reset rapido del piano dal menu flottante.
 
-## React Compiler
+## Stack tecnico
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite 7
+- ESLint 9
+- Lucide React (icone)
 
-## Expanding the ESLint configuration
+## Requisiti
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Node.js 18+ (consigliato LTS)
+- npm
+
+## Avvio locale
+
+1. Installa le dipendenze:
+
+	```bash
+	npm install
+	```
+
+2. Avvio consigliato (frontend + API insieme):
+
+  ```bash
+  npm run dev:all
+  ```
+
+3. In alternativa, avvio separato:
+
+  API categorie (terminale 1)
+
+  ```bash
+  npm run dev:api
+  ```
+
+  Frontend (terminale 2)
+
+	```bash
+	npm run dev
+	```
+
+4. Build produzione:
+
+	```bash
+	npm run build
+	```
+
+5. Preview build:
+
+	```bash
+	npm run preview
+	```
+
+6. Controllo lint:
+
+	```bash
+	npm run lint
+	```
+
+## Persistenza categorie
+
+- Le categorie vengono salvate in un file JSON lato server: `server/data/categories.json`.
+- Le modifiche fatte da interfaccia (aggiungi/modifica/elimina) sono persistenti tra riavvii dell'app.
+- Se l'API non è raggiungibile, il frontend usa le categorie di default in sola lettura runtime.
+- In sviluppo, l'API viene avviata in watch mode (`npm run dev:api`) e si riavvia automaticamente quando modifichi i file nel backend.
+
+## Persistenza disclaimer
+
+- Il disclaimer di stampa è salvato in `server/data/settings.json`.
+- Puoi modificarlo dal menu flottante con il comando **Disclaimer**.
+- La modifica è persistente e viene ricaricata ai successivi avvii del browser/app.
+
+## Uso rapido
+
+- Clicca una cella della tabella per aprire la modale di modifica.
+- Inserisci alimento, quantità opzionale e categoria.
+- Aggiungi eventuali note della cella.
+- Usa il pulsante menu in basso a destra per:
+  - aprire la gestione categorie,
+  - stampare,
+  - svuotare il piano.
+
+## Stampa
+
+- La stampa usa regole CSS dedicate per il formato pagina.
+- I controlli interattivi vengono nascosti automaticamente in print.
+- Il footer con disclaimer viene mostrato in fondo al documento stampato.
+
+## Struttura progetto
+
+- src/App.jsx: orchestrazione stato principale e layout.
+- src/components: componenti UI (tabella, modali, stampa, menu, legenda).
+- src/context: gestione stato condiviso categorie.
+- src/data: dati iniziali piano e categorie.
+
+## Troubleshooting
+
+- La stampa non rispetta il layout:
+  - verifica anteprima in Chrome/Edge,
+  - usa scala 100%,
+  - disattiva intestazioni/piè di pagina del browser,
+  - abilita grafica di sfondo se necessario.
+- PDF tagliato o impaginazione anomala:
+  - prova margini predefiniti del browser,
+  - evita zoom del browser diverso da 100%,
+  - rigenera il PDF dalla preview di stampa.
+- Modifiche non visibili dopo aggiornamenti al codice:
+  - forza refresh della pagina (Ctrl+F5),
+  - riavvia server dev con `npm run dev`.
+- Errori dipendenze o ambiente:
+  - elimina `node_modules` e file lock,
+  - reinstalla con `npm install`,
+  - verifica versione Node.js 18+.
+- Errori lint:
+  - esegui `npm run lint` e correggi i file indicati,
+  - se necessario, riavvia editor/TS server.
+
+## Note
+
+Lo schema alimentare ha finalità illustrativa e non sostituisce un parere medico o nutrizionale professionale.

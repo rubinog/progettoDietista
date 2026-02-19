@@ -75,9 +75,9 @@
 .print-footer {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #b5b5b5;
     font-size: 0.75rem;
-    color: #666;
+    color: #707070;
     text-align: center;
     /* Normally hidden on screen or shown? Let's show it so user sees what will print */
 }
@@ -137,15 +137,15 @@
     }
 
     .print-footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        border-top: 1px solid #000;
-        color: #000;
-        padding: 10px 0;
-        font-size: 0.7rem;
-        /* Small legal text */
+        position: static;
+        width: auto;
+        border-top: 1px solid #b5b5b5;
+        color: #707070;
+        margin-top: 10mm;
+        padding: 8px 0 0;
+        font-size: 0.6rem;
+        line-height: 1.25;
+        page-break-inside: avoid;
     }
 
     /* Adjust spacing for table */
@@ -179,6 +179,16 @@
 
     .meal-title-row h3 {
         font-size: 0.9rem !important;
+    }
+
+    .meal-section-note-input {
+        border: none !important;
+        background: transparent !important;
+        text-align: center;
+        color: #666 !important;
+        font-size: 0.72rem !important;
+        padding: 0 !important;
+        width: 100% !important;
     }
 
     .food-item {
