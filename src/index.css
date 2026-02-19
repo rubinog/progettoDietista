@@ -3,7 +3,7 @@
 
 :root {
   --color-header-dark: #1a2b4b;
-  --color-header-green: #8cc63f;
+  --color-header-green: #5053af; /*8cc63f*/
   /* Adjusted to match image vivid green */
   --color-section-bg: #f9f9f9;
   --color-text: #333333;
