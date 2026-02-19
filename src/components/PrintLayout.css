@@ -49,6 +49,10 @@
     gap: 10px;
 }
 
+.date-field {
+    margin-left: auto;
+}
+
 .print-input {
     padding: 8px;
     border: 1px solid #ddd;
@@ -60,6 +64,10 @@
 .patient-name {
     width: 250px;
     font-weight: 600;
+}
+
+.diet-date {
+    text-align: right;
 }
 
 .diet-title {
