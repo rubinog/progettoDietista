@@ -1,1 +1,34 @@
-/* Cleared for custom styling */
+.app-toast {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	z-index: 1200;
+	min-width: 260px;
+	max-width: 420px;
+	padding: 12px 14px;
+	border-radius: 8px;
+	color: #fff;
+	font-weight: 600;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+	animation: toast-slide-in 0.2s ease-out;
+}
+
+.app-toast.success {
+	background: #2e7d32;
+}
+
+.app-toast.error {
+	background: #c62828;
+}
+
+@keyframes toast-slide-in {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
