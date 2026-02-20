@@ -1,13 +1,78 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './PrintLayout.css';
 
 export const PrintLayout = ({ children, patientName, setPatientName, date, setDate, title, setTitle, disclaimer }) => {
-    // Default values
+    const layoutRef = useRef(null);
 
-    // handlePrint moved to App.jsx
+    useEffect(() => {
+        const clearPrintDensityClass = () => {
+            document.body.classList.remove('print-compact', 'print-very-compact');
+        };
+
+        const mmToPx = (valueInMm) => {
+            const probe = document.createElement('div');
+            probe.style.height = `${valueInMm}mm`;
+            probe.style.width = '1px';
+            probe.style.position = 'absolute';
+            probe.style.visibility = 'hidden';
+            probe.style.pointerEvents = 'none';
+            document.body.appendChild(probe);
+            const pixels = probe.getBoundingClientRect().height;
+            document.body.removeChild(probe);
+
+            if (pixels > 0) {
+                return pixels;
+            }
+
+            return valueInMm * 3.7795275591;
+        };
+
+        const applyPrintDensityClass = () => {
+            const layoutElement = layoutRef.current;
+            if (!layoutElement) {
+                return;
+            }
+
+            clearPrintDensityClass();
+
+            const printableHeightPx = mmToPx(277);
+            const contentHeightPx = layoutElement.scrollHeight;
+            const estimatedPages = contentHeightPx / printableHeightPx;
+
+            if (estimatedPages > 1.35 && estimatedPages <= 1.8) {
+                document.body.classList.add('print-very-compact');
+                return;
+            }
+
+            if (estimatedPages > 1.02 && estimatedPages <= 1.35) {
+                document.body.classList.add('print-compact');
+            }
+        };
+
+        const beforePrintHandler = () => {
+            applyPrintDensityClass();
+        };
+
+        applyPrintDensityClass();
+
+        window.addEventListener('beforeprint', beforePrintHandler);
+        window.addEventListener('resize', applyPrintDensityClass);
+
+        if (document.fonts?.ready) {
+            document.fonts.ready.then(() => {
+                applyPrintDensityClass();
+            });
+        }
+
+        return () => {
+            window.removeEventListener('beforeprint', beforePrintHandler);
+            window.removeEventListener('resize', applyPrintDensityClass);
+            clearPrintDensityClass();
+        };
+    }, [children, disclaimer, patientName, date, title]);
 
     return (
-        <div className="print-layout-container">
+        <div className="print-layout-container" ref={layoutRef}>
             {/* Controls for Printing (Hidden when printing) */}
             {/* Controls for Printing (Moved to App.jsx) */}
 

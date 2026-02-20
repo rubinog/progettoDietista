@@ -9,6 +9,7 @@ Applicazione React + Vite per creare uno schema alimentare settimanale, modifica
 - Categorie alimentari colorate con legenda.
 - Gestione categorie (aggiunta, modifica, eliminazione) in tempo reale.
 - Intestazione personalizzabile per paziente, data e titolo schema.
+- Salvataggio locale dello schema in file `.dieta` e successivo caricamento.
 - Stampa/PDF con layout ottimizzato e disclaimer finale.
 - Reset rapido del piano dal menu flottante.
 
@@ -90,8 +91,23 @@ Applicazione React + Vite per creare uno schema alimentare settimanale, modifica
 - Aggiungi eventuali note della cella.
 - Usa il pulsante menu in basso a destra per:
   - aprire la gestione categorie,
+  - salvare lo schema su file `.dieta`,
+  - caricare uno schema da file `.dieta`,
   - stampare,
   - svuotare il piano.
+
+## Salvataggio e caricamento file `.dieta`
+
+- Dal menu flottante usa **Salva** per esportare lo schema corrente in un file locale con estensione `.dieta`.
+- Il nome file viene generato dai campi del foglio: `Paziente - Titolo - YYYYMMDD.dieta`.
+- Il file contiene: piano settimanale, nome paziente, data, titolo e disclaimer.
+- Usa **Carica** per selezionare un file `.dieta` precedentemente esportato e ripristinare i dati per ulteriori modifiche.
+
+## Versione formato `.dieta`
+
+- I file esportati includono metadati di formato con `format: "progetto-dietista"` e `version: 1`.
+- La versione attuale supportata in import è **v1**.
+- In caso di evoluzioni future del formato, la versione consente di mantenere la retrocompatibilità o mostrare un errore chiaro su file non supportati.
 
 ## Stampa
 

@@ -43,5 +43,10 @@
     "id": "dolci",
     "label": "Dolci",
     "color": "var(--color-dolci)"
+  },
+  "FRUTTA_SECCA": {
+    "id": "frutta_secca",
+    "label": "Frutta Secca",
+    "color": "#a4a611"
   }
 }

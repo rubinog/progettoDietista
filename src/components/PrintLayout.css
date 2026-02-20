@@ -100,9 +100,8 @@
 
     /* Reset page margins/padding if needed */
     @page {
-        size: portrait;
-        margin: 0;
-        /* Removing margin hides browser default headers/footers */
+        size: A4 portrait;
+        margin: 10mm;
     }
 
     body {
@@ -114,14 +113,15 @@
     }
 
     .print-layout-container {
-        padding: 1cm;
-        /* Restore margin as padding */
+        padding: 0;
     }
 
     .print-header {
         border-bottom: none !important;
         margin-bottom: 0 !important;
         padding-bottom: 0 !important;
+        break-inside: avoid-page;
+        page-break-inside: avoid;
     }
 
     .header-row {
@@ -153,6 +153,7 @@
         padding: 8px 0 0;
         font-size: 0.6rem;
         line-height: 1.25;
+        break-inside: avoid-page;
         page-break-inside: avoid;
     }
 
@@ -168,6 +169,27 @@
 
     .weekly-container {
         box-shadow: none !important;
+    }
+
+    .meal-section {
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+    }
+
+    .meal-grid-row {
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+    }
+
+    .day-cell {
+        min-height: 62px !important;
+        padding: 5px 6px !important;
+    }
+
+    .cell-note {
+        font-size: 0.68rem !important;
+        margin-top: 3px !important;
+        padding-top: 2px !important;
     }
 
     /* Print Font Reductions */
@@ -220,6 +242,7 @@
     .legend-container {
         padding: 10px 0 !important;
         gap: 10px !important;
+        break-inside: avoid-page;
         page-break-inside: avoid;
     }
 
@@ -230,5 +253,103 @@
 
     .legend-label {
         font-size: 0.8rem !important;
+    }
+
+    body.print-compact .print-input {
+        font-size: 1rem !important;
+    }
+
+    body.print-compact .diet-title {
+        font-size: 1.7rem !important;
+        margin-bottom: 12px !important;
+    }
+
+    body.print-compact .day-header-cell {
+        font-size: 0.82rem !important;
+        padding: 6px 2px !important;
+    }
+
+    body.print-compact .meal-title-row h3 {
+        font-size: 0.82rem !important;
+    }
+
+    body.print-compact .day-cell {
+        min-height: 54px !important;
+        padding: 4px 5px !important;
+    }
+
+    body.print-compact .food-item {
+        font-size: 0.64rem !important;
+        margin-bottom: 1px !important;
+    }
+
+    body.print-compact .meal-section-note-input {
+        font-size: 0.66rem !important;
+    }
+
+    body.print-compact .legend-container {
+        gap: 8px !important;
+        padding: 8px 0 !important;
+    }
+
+    body.print-very-compact .print-input {
+        font-size: 0.92rem !important;
+    }
+
+    body.print-very-compact .diet-title {
+        font-size: 1.55rem !important;
+        margin-bottom: 8px !important;
+    }
+
+    body.print-very-compact .day-header-cell {
+        font-size: 0.76rem !important;
+        padding: 5px 1px !important;
+    }
+
+    body.print-very-compact .meal-title-row {
+        padding: 3px !important;
+    }
+
+    body.print-very-compact .meal-title-row h3 {
+        font-size: 0.78rem !important;
+    }
+
+    body.print-very-compact .day-cell {
+        min-height: 48px !important;
+        padding: 3px 4px !important;
+    }
+
+    body.print-very-compact .food-item {
+        font-size: 0.6rem !important;
+        line-height: 1.15 !important;
+        margin-bottom: 1px !important;
+    }
+
+    body.print-very-compact .dot {
+        width: 5px !important;
+        height: 5px !important;
+        margin-top: 3px !important;
+    }
+
+    body.print-very-compact .meal-note-row {
+        padding: 4px 6px 6px !important;
+    }
+
+    body.print-very-compact .meal-section-note-input {
+        font-size: 0.62rem !important;
+    }
+
+    body.print-very-compact .legend-container {
+        gap: 6px !important;
+        padding: 6px 0 !important;
+    }
+
+    body.print-very-compact .legend-item .big-dot {
+        width: 10px !important;
+        height: 10px !important;
+    }
+
+    body.print-very-compact .legend-label {
+        font-size: 0.7rem !important;
     }
 }

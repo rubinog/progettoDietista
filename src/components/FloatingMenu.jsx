@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './FloatingMenu.css';
-import { Menu, X, Printer, Trash2, Settings, FilePenLine } from 'lucide-react';
+import { Menu, X, Printer, Trash2, Settings, FilePenLine, Save, FolderOpen } from 'lucide-react';
 
-export const FloatingMenu = ({ onManageCategories, onEditDisclaimer, onPrint, onClear }) => {
+export const FloatingMenu = ({ onManageCategories, onEditDisclaimer, onSaveDietFile, onLoadDietFile, onPrint, onClear }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -32,6 +32,28 @@ export const FloatingMenu = ({ onManageCategories, onEditDisclaimer, onPrint, on
                     <span className="action-label">Disclaimer</span>
                     <div className="action-icon">
                         <FilePenLine size={20} />
+                    </div>
+                </button>
+
+                <button
+                    onClick={() => { onSaveDietFile(); setIsOpen(false); }}
+                    className="menu-action-btn"
+                    title="Salva File Dieta"
+                >
+                    <span className="action-label">Salva</span>
+                    <div className="action-icon">
+                        <Save size={20} />
+                    </div>
+                </button>
+
+                <button
+                    onClick={() => { onLoadDietFile(); setIsOpen(false); }}
+                    className="menu-action-btn"
+                    title="Carica File Dieta"
+                >
+                    <span className="action-label">Carica</span>
+                    <div className="action-icon">
+                        <FolderOpen size={20} />
                     </div>
                 </button>
 
