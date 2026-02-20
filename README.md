@@ -103,6 +103,12 @@ Applicazione React + Vite per creare uno schema alimentare settimanale, modifica
 - Il file contiene: piano settimanale, nome paziente, data, titolo e disclaimer.
 - Usa **Carica** per selezionare un file `.dieta` precedentemente esportato e ripristinare i dati per ulteriori modifiche.
 
+## Versione formato `.dieta`
+
+- I file esportati includono metadati di formato con `format: "progetto-dietista"` e `version: 1`.
+- La versione attuale supportata in import è **v1**.
+- In caso di evoluzioni future del formato, la versione consente di mantenere la retrocompatibilità o mostrare un errore chiaro su file non supportati.
+
 ## Stampa
 
 - La stampa usa regole CSS dedicate per il formato pagina.
